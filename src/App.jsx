@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import profileImage from "./assets/profile.jpg"; // 准备一张头像图片放在src/assets目录下
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [skills] = useState([
+    "React",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Git",
+    "Web Development",
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container">
+      <header>
+        <img src={profileImage} alt="Profile" className="profile-img" />
+        <h1>小王的个人主页</h1>
+      </header>
 
-export default App
+      <section className="about">
+        <h2>关于我</h2>
+        <p>从零开始自学Web到AI</p>
+      </section>
+
+      <section className="skills">
+        <h2>技术栈</h2>
+        <div className="skills-container">
+          {skills.map((skill, index) => (
+            <span key={index} className="skill-tag">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact">
+        <h2>联系我</h2>
+        <div className="links">
+          <a
+            href="https://github.com/wml-6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a href="wml19549162860@163.com">Email</a>
+        </div>
+      </section>
+    </div>
+  );
+}
